@@ -1,7 +1,7 @@
 # change if you need a different node version
 ARG NODE_VERSION=22
 
-FROM alpine AS litestream-builer
+FROM --platform=linux/amd64 alpine:3.19 AS litestream-builer
 # change to your desired litestream version
 ARG LITESTREAM_VERSION=0.3.13
 
@@ -9,7 +9,7 @@ ENV LITESTREAM_VERSION=${LITESTREAM_VERSION}
 ADD "https://github.com/benbjohnson/litestream/releases/download/v${LITESTREAM_VERSION}/litestream-v${LITESTREAM_VERSION}-linux-amd64.tar.gz" /tmp/litestream.tar.gz
 RUN tar -C /usr/local/bin -xzf /tmp/litestream.tar.gz
 
-FROM n8nio/base:${NODE_VERSION}
+FROM --platform=linux/amd64 docker.io/n8nio/base:${NODE_VERSION}
 # change to your desired n8n version
 ARG N8N_VERSION="1.50.1"
 EXPOSE 5678

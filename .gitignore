@@ -1,0 +1,5 @@
+# 環境変数
+.env
+
+# .env.exampleは除外しない（サンプルとして共有するため）
+!.env.example 
